@@ -188,6 +188,7 @@ module.exports = function meddleware(settings) {
                 parent.emit('middleware:before', eventargs);
                 parent.emit('middleware:before:' + spec.name, eventargs);
                 _app.use(spec.route || '/', fn);
+                eventargs.middleware = fn;
                 parent.emit('middleware:after:' + spec.name, eventargs);
                 parent.emit('middleware:after', eventargs);
             });
